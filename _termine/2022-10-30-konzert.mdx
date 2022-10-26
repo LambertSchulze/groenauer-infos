@@ -1,17 +1,15 @@
+import { Waldschule } from '../_meta/schemas'
+
 export const meta {
-    title: '36. Volkstümliches Konzert'
-    date: '2022-10-30T15:00:00+02'
-    place: 'Waldschule Groß Grönau'
-    image: '/assets/termine/'
+    title: '36. Volkstümliches Konzert',
+    date: '2022-10-30T15:00:00+02',
+    place: 'Waldschule Groß Grönau',
+    image: '/assets/termine/',
     schema: {
-        type: 'MusicEvent'
-        name: '36. Volkstümliches Konzert'
-        startDate: '2022-10-30T15:00:00+02'
-        location: {
-            type: 'Place'
-            name: 'Waldschule Groß Grönau'
-            address: ''
-        }
+        type: 'MusicEvent',
+        name: '36. Volkstümliches Konzert',
+        startDate: '2022-10-30T15:00:00+02',
+        location: Waldschule,
         performer: [
             {
                 type: 'MusicGroup',
@@ -21,9 +19,9 @@ export const meta {
                 type: 'MusicGroup',
                 name: ''
             }
-        ]
+        ],
         offer:
-            price: 7
+            price: 7,
             priceCurrency: 'EUR'
     }
 }
