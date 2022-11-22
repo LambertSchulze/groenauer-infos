@@ -3,9 +3,9 @@
 Codebase for the site.
 Build with Astro.
 
-## 🚀 Project Structure
+## Project Structure
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
