@@ -28,7 +28,5 @@
   <!-- inverted colors look funny on colored icon -->
 	<!-- style>
     @media (prefers-color-scheme:dark){:root{filter:invert(100%)}}
-  </style>
-</svg -->
-
-<!-- <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>⚜</text></svg> -->
+  </style -->
+</svg>
