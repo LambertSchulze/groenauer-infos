@@ -1,4 +1,7 @@
 ---
+import '../styles/global.css'
+
+const termine = await Astro.glob('../../termine/*.md')
 ---
 
 <html lang="de">
@@ -24,9 +27,14 @@
 
 		<h2>Termine</h2>
 		<ul>
+			{termine.map(termin => (
+				<li><a href="/">{termin.frontmatter.title}</a></li>
+			))}
+		</ul>
+		<!-- <ul>
 			<li>Termin 1</li>
 			<li>Noch ein Termin</li>
-		</ul>
+		</ul> -->
 
 	</body>
 </html>
