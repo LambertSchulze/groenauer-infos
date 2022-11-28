@@ -1,40 +1,36 @@
 ---
-import '../styles/global.css'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TerminCard from '../components/TerminCard.astro';
+import { getFilenameFromPath } from '../helpers'
 
 const termine = await Astro.glob('../../termine/*.md')
 ---
 
-<html lang="de">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Grönauer Infos</title>
-	</head>
-	<body>
-		<hgroup>
-			<h1>Grönauer Infos</h1>
-			<p>Was geht ab? Von und für Grönauer.</p>
-		</hgroup>
+<BaseLayout>
+	<hgroup>
+		<h1>Grönauer Infos</h1>
+		<p>Was geht ab? Von und für Grönauer.</p>
+	</hgroup>
 
-		<nav>
-			<ul>
-				<li><a href="/">Startseite</a></li>
-				<li><a href="/termine">Termine</a></li>
-			</ul>
-		</nav>
-
-		<h2>Termine</h2>
+	<nav>
 		<ul>
-			{termine.map(termin => (
-				<li><a href="/">{termin.frontmatter.title}</a></li>
-			))}
+			<li><a href="/">Startseite</a></li>
+			<li><a href="/termine">Termine</a></li>
 		</ul>
-		<!-- <ul>
-			<li>Termin 1</li>
-			<li>Noch ein Termin</li>
-		</ul> -->
+	</nav>
 
-	</body>
-</html>
+	<h2>Termine</h2>
+	<ol>
+		{termine.map(termin => (
+			<li>
+				<a href={`/termine/${getFilenameFromPath(termin.file)}`}>
+					<TerminCard
+						date={termin.frontmatter.date}
+						title={termin.frontmatter.title}
+						place={termin.frontmatter.place}
+					/>
+				</a>
+			</li>
+		))}
+	</ol>
+</BaseLayout>

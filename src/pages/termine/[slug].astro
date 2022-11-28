@@ -1,12 +1,8 @@
 ---
-import { getFilenameFromPath } from "../../helpers"
-
-interface Frontmatter {
-  title: string;
-  date: string;
-  place: string;
-  image?: string;
-}
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import TerminInfo from '../../components/TerminInfo.astro'
+import { getFilenameFromPath } from '../../helpers'
+import type { TerminFrontmatter as Frontmatter } from '../../types'
 
 export async function getStaticPaths() {
   const termine = await Astro.glob<Frontmatter>('../../../termine/*.md')
@@ -16,15 +12,16 @@ export async function getStaticPaths() {
       slug: getFilenameFromPath(termin.file)
     },
     props: {
-      termin: termin,
-      data: termin.frontmatter
+      frontmatter: termin.frontmatter,
+      Content: termin.Content
     }
   }})
 }
 
-const { data } = Astro.props;
-const { Content } = Astro.props.termin
+const { frontmatter, Content } = Astro.props
 ---
 
-<h1>{data.title}</h1>
-<Content />
+<BaseLayout>
+  <TerminInfo termin={frontmatter} />
+  <Content />
+</BaseLayout>
