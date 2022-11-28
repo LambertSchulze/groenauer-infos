@@ -1,4 +1,6 @@
 ---
+import DateTime from './DateTime.astro'
+
 const { termin } = Astro.props
 ---
 
@@ -6,7 +8,7 @@ const { termin } = Astro.props
   <h1>{termin.title}</h1>
   <dl>
     <dt>Datum</dt>
-    <dd>{termin.date}</dd>
+    <dd><DateTime dateString={termin.date} /></dd>
     <dt>Ort</dt>
     <dd>{termin.place}</dd>
   </dl>

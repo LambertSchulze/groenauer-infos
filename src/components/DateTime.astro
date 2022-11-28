@@ -1,0 +1,25 @@
+---
+const { dateString } = Astro.props
+
+const fullTime = dateString.split('/')
+const startDate = fullTime[0].split('T')[0]
+const endDate = (fullTime[1] || '').split('T')[0] ?? ''
+
+const options: Intl.DateTimeFormatOptions = {
+  dateStyle: 'long',
+  timeStyle: 'short'
+}
+---
+
+<time datetime={dateString}>
+  {new Date(fullTime[0]).toLocaleString('de', options)}
+  {fullTime[1] && 
+    <>
+      –
+      {startDate === endDate
+        ? new Date(fullTime[1]).toLocaleTimeString('de')
+        : new Date(fullTime[1]).toLocaleString('de')
+      }
+    </>
+  }
+</time>
