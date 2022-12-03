@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import TerminCard from '../components/TerminCard.astro';
+import TerminCard from '../components/TerminCard.astro'
 import { getFilenameFromPath } from '../helpers'
+import type { TerminFrontmatter } from '../types'
 
-const termine = await Astro.glob('../../termine/*.md')
+const termine = await Astro.glob<TerminFrontmatter>('../../termine/*.md')
 ---
 
 <BaseLayout>
