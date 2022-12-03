@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import TerminCard from '../../components/TerminCard.astro'
+import { getFilenameFromPath } from '../../helpers'
+import type { TerminFrontmatter } from '../../types'
+
+const termine = await Astro.glob<TerminFrontmatter>('../../../termine/*.md')
+const upcomingTermine = termine.filter(t => t.frontmatter.date >= Date())
+const pastTermine = termine.filter(t => t.frontmatter.date <= Date())
+---
+
+<BaseLayout>
+	<hgroup>
+		<h1>Grönauer Infos</h1>
+		<p>Was geht ab? Von und für Grönauer.</p>
+	</hgroup>
+
+	<nav>
+		<ul>
+			<li><a href="/">Startseite</a></li>
+			<li><a href="/termine">Termine</a></li>
+		</ul>
+	</nav>
+
+  <h2>Kommende Termine</h2>
+  {upcomingTermine.length > 0 && (
+    <ol>
+      {upcomingTermine.map(termin => (
+        <li>
+          <a href={`/termine/${getFilenameFromPath(termin.file)}`}>
+            <TerminCard
+              date={termin.frontmatter.date}
+              title={termin.frontmatter.title}
+              place={termin.frontmatter.place}
+            />
+          </a>
+        </li>
+      ))}
+    </ol>
+  )}
+  {!upcomingTermine.length && <p>nichts neues</p>}
+
+  <h2>Vergangene Termine</h2>
+  <ol>
+    {pastTermine.map(termin => (
+      <li>
+        <a href={`/termine/${getFilenameFromPath(termin.file)}`}>
+          <TerminCard
+            date={termin.frontmatter.date}
+            title={termin.frontmatter.title}
+            place={termin.frontmatter.place}
+          />
+        </a>
+      </li>
+    ))}
+  </ol>
+</BaseLayout>
