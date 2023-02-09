@@ -1,8 +1,8 @@
 ---
   title: 'Spielenachmittag der "Mobilen Spielothek"'
   date: '2023-11-01'
-  time: '15:00:00+02'
-  timeEnd: '16:30:00+02'
+  time: '15:00:00+02:00'
+  timeEnd: '16:30:00+02:00'
   place: 'Gemeindehaus'
 ---
 
