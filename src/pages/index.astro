@@ -16,7 +16,8 @@ const events = await Astro.glob<EventFrontmatter>('../../termine/*.md')
 	<h2>Die nächsten Termine</h2>
 	<ol>
 		{events
-			.filter(event => new Date() <= new Date(event.frontmatter.date) && new Date(event.frontmatter.date) <= new Date(Date.now() + (1000 * 60 * 60 * 24 * 30)))
+			.filter(event => new Date() <= new Date(event.frontmatter.date) &&
+				new Date(event.frontmatter.date) <= new Date(Date.now() + ((1000 * 60 * 60 * 24) * 60)))
 			.map(event => (
 			<li>
 				<a href={`/termine/${getFilenameFromPath(event.file)}`}>
@@ -34,9 +35,3 @@ const events = await Astro.glob<EventFrontmatter>('../../termine/*.md')
 	</ol>
 	<p><a href="/termine">Alle kommenden Termine</a></p>
 </BaseLayout>
-
-<style>
-	li {
-		list-style: none;
-	}
-</style>
