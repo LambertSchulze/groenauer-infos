@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const { frontmatter, Content } = Astro.props
 ---
 
-<BaseLayout>
+<BaseLayout title={frontmatter.title}>
   <EventInfo event={frontmatter} />
   <Content />
 </BaseLayout>

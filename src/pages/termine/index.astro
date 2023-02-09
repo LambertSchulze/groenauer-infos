@@ -8,7 +8,7 @@ const event = await Astro.glob<EventFrontmatter>('../../../termine/*.md')
 const upcomingEvents = event.filter(event => new Date() <= new Date(event.frontmatter.date))
 ---
 
-<BaseLayout>
+<BaseLayout title='Termine'>
   <h2>Kommende Termine</h2>
   {upcomingEvents.length > 0 ? (
     <ol>

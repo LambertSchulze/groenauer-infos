@@ -1,7 +1,9 @@
 ---
-import '../styles/global.css'
 
-// const { } = Astro.props
+const { title } = Astro.props
+
+const siteTitle = 'Grönauer Infos'
+const documentTitle = title ? siteTitle.concat(' • ', title) : siteTitle
 ---
 
 <html lang="de">
@@ -10,7 +12,7 @@ import '../styles/global.css'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Grönauer Infos</title>
+		<title>{documentTitle}</title>
   </head>
   <body>
     <slot />
