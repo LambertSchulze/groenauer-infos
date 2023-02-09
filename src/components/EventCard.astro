@@ -1,11 +1,11 @@
 ---
 import DateTime from './DateTime.astro'
 
-const { date, title, place } = Astro.props
+const { date, dateEnd, time, timeEnd, title, place } = Astro.props
 ---
 
 <article>
   <h3>{title}</h3>
-  <DateTime dateString={date} />
+  <DateTime date={date} dateEnd={dateEnd} { time } { timeEnd } />
   <p>{place}</p>
 </article>

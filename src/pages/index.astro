@@ -3,11 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import EventCard from '../components/EventCard.astro'
 import { getFilenameFromPath } from '../helpers'
 import type { EventFrontmatter } from '../types'
-import { getUpcomingEvents } from '../api/events.astro'
-
 
 const events = await Astro.glob<EventFrontmatter>('../../termine/*.md')
-console.log(events.map(e => e.frontmatter.date))
 ---
 
 <BaseLayout>
