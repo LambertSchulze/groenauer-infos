@@ -1,37 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import TerminCard from '../components/TerminCard.astro'
+import EventCard from '../components/EventCard.astro'
 import { getFilenameFromPath } from '../helpers'
-import type { TerminFrontmatter } from '../types'
+import type { EventFrontmatter } from '../types'
+import { getUpcomingEvents } from '../api/events.astro'
 
-const termine = await Astro.glob<TerminFrontmatter>('../../termine/*.md')
+
+const events = await Astro.glob<EventFrontmatter>('../../termine/*.md')
+console.log(events.map(e => e.frontmatter.date))
 ---
 
 <BaseLayout>
 	<hgroup>
 		<h1>Grönauer Infos</h1>
-		<p>Was geht ab? Von und für Grönauer.</p>
+		<p>Von und für Grönauer.</p>
 	</hgroup>
 
-	<nav>
-		<ul>
-			<li><a href="/">Startseite</a></li>
-			<li><a href="/termine">Termine</a></li>
-		</ul>
-	</nav>
-
-	<h2>Termine</h2>
+	<h2>Die nächsten Termine</h2>
 	<ol>
-		{termine.map(termin => (
+		{events
+			.filter(event => new Date() <= new Date(event.frontmatter.date) && new Date(event.frontmatter.date) <= new Date(Date.now() + (1000 * 60 * 60 * 24 * 30)))
+			.map(event => (
 			<li>
-				<a href={`/termine/${getFilenameFromPath(termin.file)}`}>
-					<TerminCard
-						date={termin.frontmatter.date}
-						title={termin.frontmatter.title}
-						place={termin.frontmatter.place}
+				<a href={`/termine/${getFilenameFromPath(event.file)}`}>
+					<EventCard
+						date={event.frontmatter.date}
+						dateEnd={event.frontmatter.dateEnd}
+						time={event.frontmatter.time}
+						timeEnd={event.frontmatter.timeEnd}
+						title={event.frontmatter.title}
+						place={event.frontmatter.place}
 					/>
 				</a>
 			</li>
 		))}
 	</ol>
+	<p><a href="/termine">Alle kommenden Termine</a></p>
 </BaseLayout>
+
+<style>
+	li {
+		list-style: none;
+	}
+</style>

@@ -1,7 +1,8 @@
 ---
   title: 'Joy to the World'
   subtitle: 'Adventliche Chormusik aus fünf Jahrhunderten'
-  date: '2022-12-03T17:00:00+01:00'
+  date: '2022-12-03'
+  time: '17:00:00+01:00'
   place: 'St. Willehad'
   image: ''
   price: '0'
