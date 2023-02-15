@@ -1,0 +1,30 @@
+---
+const currentPath = Astro.url.pathname
+---
+
+<nav class="shadow bg-gradient-to-tr from-red-600 to-red-400 flex">
+  <ul class="h-16 px-5 flex items-center justify-between gap-5">
+    <li>
+      <a
+        href="/"
+        aria-current={currentPath === "/" ? "page" : false}
+      >
+        Start
+      </a>
+    </li>
+    <li>
+      <a
+        href="/termine/"
+        aria-current={currentPath === "/termine/" ? "page" : false}
+      >
+        Termine
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  a[aria-current="page"] {
+    text-decoration: underline;
+  }
+</style>

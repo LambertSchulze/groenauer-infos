@@ -1,4 +1,6 @@
 ---
+import MainNavigation from "../components/MainNavigation.astro";
+
 const { title } = Astro.props
 
 const siteTitle = 'Grönauer Infos'
@@ -14,6 +16,7 @@ const documentTitle = title ? siteTitle.concat(' • ', title) : siteTitle
 		<title>{documentTitle}</title>
   </head>
   <body>
+    <MainNavigation />
     <slot />
   </body>
 </html>
