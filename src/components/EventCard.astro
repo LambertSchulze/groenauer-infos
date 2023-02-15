@@ -4,7 +4,7 @@ import DateTime from './DateTime.astro'
 const { date, dateEnd, time, timeEnd, title, place } = Astro.props
 ---
 
-<article>
+<article class="p-5 border-b-2 bg-gradient-to-b from-white to-gray-100 hover:underline">
   <h3>{title}</h3>
   <DateTime date={date} dateEnd={dateEnd} { time } { timeEnd } />
   <p>{place}</p>

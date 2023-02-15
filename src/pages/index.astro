@@ -8,30 +8,34 @@ const events = await Astro.glob<EventFrontmatter>('../../termine/*.md')
 ---
 
 <BaseLayout>
-	<hgroup>
-		<h1>Grönauer Infos</h1>
-		<p>Von und für Grönauer.</p>
+	<hgroup class="text-center my-5">
+		<h1 class="bg-gradient-to-tr from-red-500 to-red-400 bg-clip-text text-5xl font-semibold text-transparent">Grönauer Infos</h1>
+		<p class="text-sm">Von und für Grönauer.</p>
 	</hgroup>
 
-	<h2>Die nächsten Termine</h2>
-	<ol>
-		{events
-			.filter(event => new Date() <= new Date(event.frontmatter.date) &&
-				new Date(event.frontmatter.date) <= new Date(Date.now() + ((1000 * 60 * 60 * 24) * 60)))
-			.map(event => (
-			<li>
-				<a href={`/termine/${getFilenameFromPath(event.file)}`}>
-					<EventCard
-						date={event.frontmatter.date}
-						dateEnd={event.frontmatter.dateEnd}
-						time={event.frontmatter.time}
-						timeEnd={event.frontmatter.timeEnd}
-						title={event.frontmatter.title}
-						place={event.frontmatter.place}
-					/>
-				</a>
-			</li>
-		))}
-	</ol>
-	<p><a href="/termine">Alle kommenden Termine</a></p>
+	<section>
+		<h2 class="px-5 text-xl">Die nächsten Termine</h2>
+		<ol>
+			{events
+				.filter(event => new Date() <= new Date(event.frontmatter.date) &&
+					new Date(event.frontmatter.date) <= new Date(Date.now() + ((1000 * 60 * 60 * 24) * 60)))
+				.map(event => (
+				<li>
+					<a href={`/termine/${getFilenameFromPath(event.file)}`}>
+						<EventCard
+							date={event.frontmatter.date}
+							dateEnd={event.frontmatter.dateEnd}
+							time={event.frontmatter.time}
+							timeEnd={event.frontmatter.timeEnd}
+							title={event.frontmatter.title}
+							place={event.frontmatter.place}
+						/>
+					</a>
+				</li>
+			))}
+		</ol>
+		<p class="text-center">
+			<a class="underline text-blue-500" href="/termine/">Alle kommenden Termine</a>
+		</p>
+	</section>
 </BaseLayout>
