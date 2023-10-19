@@ -1,11 +1,11 @@
 ---
-const { date, dateEnd, time, timeEnd } = Astro.props
+const { date, dateEnd, time, timeEnd, dateStyle } = Astro.props
 
-const optionsDate: Intl.DateTimeFormatOptions = { dateStyle: 'long' }
+const optionsDate: Intl.DateTimeFormatOptions = { dateStyle: dateStyle ?? 'long' }
 const optionsTime: Intl.DateTimeFormatOptions = { timeStyle: 'short' }
 const optionsDateAndTime = {
-  ...optionsDate,
-  ...optionsTime
+	...optionsDate,
+	...optionsTime
 }
 
 let dateTime: string = date
@@ -13,18 +13,14 @@ if      (time)                dateTime = dateTime.concat('T', time)
 if      (dateEnd && timeEnd)  dateTime = dateTime.concat('/', dateEnd, 'T', timeEnd)
 else if (dateEnd && !timeEnd) dateTime = dateTime.concat('/', dateEnd)
 else if (!dateEnd && timeEnd) dateTime = dateTime.concat('/', date, 'T', timeEnd)
+
+let str = time ?
+	new Date(`${date}T${time}`).toLocaleString('de', optionsDateAndTime) :
+	new Date(date).toLocaleDateString('de', optionsDate)
+if (dateEnd || timeEnd) str = str.concat('&mdash;')
+if (dateEnd && timeEnd) str = str.concat(new Date(`${dateEnd}T${timeEnd}`).toLocaleString('de', optionsDateAndTime))
+if (dateEnd && !timeEnd) str = str.concat(new Date(dateEnd).toLocaleDateString('de', optionsDate))
+if (timeEnd && !dateEnd) str = str.concat(new Date(`${date}T${timeEnd}`).toLocaleTimeString('de', optionsTime))
 ---
 
-<time datetime={dateTime}>
-  {time ?
-    new Date(`${date}T${time}`).toLocaleString('de', optionsDateAndTime) :
-    new Date(date).toLocaleDateString('de', optionsDate)
-  }
-  {(dateEnd || timeEnd) &&
-    <>
-      &mdash;
-      {!dateEnd && new Date(`${date}T${timeEnd}`).toLocaleTimeString('de', optionsTime)}
-      {(dateEnd && timeEnd) && new Date(`${dateEnd}T${timeEnd}`).toLocaleString('de', optionsDateAndTime)}
-    </>
-  }
-</time>
+<time datetime={dateTime} set:html={str} />

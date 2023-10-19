@@ -9,7 +9,7 @@ const events = (await getCollection('termine'))
 ---
 
 <BaseLayout>
-	<div class="my-3 d-flex justify-content-between align-items-center">
+	<div class="my-5 d-flex justify-content-between align-items-center">
 		<hgroup class="text-center flex-grow-1">
 			<h1 class="display-5 fw-bold">Grönauer Infos</h1>
 			<p class="lead">Von und für Grönauer.</p>
@@ -23,7 +23,7 @@ const events = (await getCollection('termine'))
 		/>
 	</div>
 
-	<article class="">
+	<article class="my-5">
 		<h2 class="">Anstehende Termine</h2>
 		<ol data-masonry='{"percentPosition": true }' class="row p-0">
 			{events.map(event => (
@@ -36,4 +36,12 @@ const events = (await getCollection('termine'))
 			<a class="" href="/termine/">Alle kommenden Termine</a>
 		</p>
 	</article>
+
+	<section class="my-5 bg-info-subtle border-start border-info border-5">
+		<p class="p-2">
+			Du weißt was in Grönau los ist und was andere auch wissen sollten?
+			Schreib einfach eine Mail und mach mit!
+			<a href="mailto:info@groenauer-infos.de">info@groenauer-infos.de</a>
+		</p>
+	</section>
 </BaseLayout>

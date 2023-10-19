@@ -7,7 +7,7 @@ const termine = defineCollection({
         subtitle:  z.string().optional(),
         date:      z.string(),
         dateEnd:   z.string().optional(),
-        time:      z.string(),
+        time:      z.string().optional(),
         timeEnd:   z.string().optional(),
         image:     z.string().optional(),
         place:     z.string(),
