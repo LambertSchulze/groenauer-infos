@@ -1,27 +1,48 @@
 ---
+import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import EventInfo from '../../components/EventInfo.astro'
-import { getFilenameFromPath } from '../../helpers'
-import type { EventFrontmatter as Frontmatter } from '../../types'
+import DateTime from '../../components/DateTime.astro'
 
 export async function getStaticPaths() {
-  const events = await Astro.glob<Frontmatter>('../../../termine/*.md')
-
-  return events.map(event => { return {
+  const events = await getCollection('termine')
+  return events.map(event => ({
     params: {
-      slug: getFilenameFromPath(event.file)
+      slug: event.slug
     },
-    props: {
-      frontmatter: event.frontmatter,
-      Content: event.Content
-    }
-  }})
+    props: event
+  }))
 }
+type Props = CollectionEntry<'termine'>
 
-const { frontmatter, Content } = Astro.props
+const event = Astro.props
+const { Content } = await event.render()
 ---
 
-<BaseLayout title={frontmatter.title}>
-  <EventInfo event={frontmatter} />
-  <Content />
+<BaseLayout title={event.data.title}>
+  <article>
+    {event.data.subtitle ?
+      <hgroup class="my-5">
+        <h1>{event.data.title}</h1>
+        <p class="lead">{event.data.subtitle}</p>
+      </hgroup> :
+      <h1 class="my-5">{event.data.title}</h1>
+    }
+
+    <dl>
+      <dt class="fw-lighter">Wann?</dt>
+      <dd>
+        <DateTime
+          date={event.data.date}
+          dateEnd={event.data.dateEnd}
+          time={event.data.time}
+          timeEnd={event.data.timeEnd}
+        />
+      </dd>
+      <dt class="fw-lighter">Wo?</dt>
+      <dd>{event.data.place}</dd>
+    </dl>
+    <hr />
+    <Content />
+  </article>
 </BaseLayout>

@@ -1,41 +1,39 @@
 ---
+import { getCollection } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import EventCard from '../components/EventCard.astro'
-import { getFilenameFromPath } from '../helpers'
-import type { EventFrontmatter } from '../types'
+import EventCard from '../components/EventCard.astro';
 
-const events = await Astro.glob<EventFrontmatter>('../../termine/*.md')
+const events = (await getCollection('termine'))
+				.filter(event => new Date() <= new Date(event.data.date)
+						&& new Date(event.data.date) <= new Date(Date.now() + ((1000 * 60 * 60 * 24) * 60)))
 ---
 
 <BaseLayout>
-	<hgroup class="text-center my-5">
-		<h1 class="bg-gradient-to-tr from-red-500 to-red-400 bg-clip-text text-5xl font-semibold text-transparent">Grönauer Infos</h1>
-		<p class="text-sm">Von und für Grönauer.</p>
-	</hgroup>
+	<div class="my-3 d-flex justify-content-between align-items-center">
+		<hgroup class="text-center flex-grow-1">
+			<h1 class="display-5 fw-bold">Grönauer Infos</h1>
+			<p class="lead">Von und für Grönauer.</p>
+		</hgroup>
 
-	<section>
-		<h2 class="px-5 text-xl">Die nächsten Termine</h2>
-		<ol>
-			{events
-				.filter(event => new Date() <= new Date(event.frontmatter.date) &&
-					new Date(event.frontmatter.date) <= new Date(Date.now() + ((1000 * 60 * 60 * 24) * 60)))
-				.map(event => (
-				<li>
-					<a href={`/termine/${getFilenameFromPath(event.file)}`}>
-						<EventCard
-							date={event.frontmatter.date}
-							dateEnd={event.frontmatter.dateEnd}
-							time={event.frontmatter.time}
-							timeEnd={event.frontmatter.timeEnd}
-							title={event.frontmatter.title}
-							place={event.frontmatter.place}
-						/>
-					</a>
+		<iframe
+			class="p-2 rounded-4"
+			width="450"
+			height="350"
+			src="https://www.openstreetmap.org/export/embed.html?bbox=10.726518630981447%2C53.79725437139942%2C10.751237869262695%2C53.82758460006296&amp;layer=mapnik"
+		/>
+	</div>
+
+	<article class="">
+		<h2 class="">Anstehende Termine</h2>
+		<ol data-masonry='{"percentPosition": true }' class="row p-0">
+			{events.map(event => (
+				<li class="col-sm-6 col-lg-4 md-4 my-2" style={{'listStyleType': 'none'}}>
+					<EventCard event={event} />
 				</li>
 			))}
 		</ol>
-		<p class="text-center">
-			<a class="underline text-blue-500" href="/termine/">Alle kommenden Termine</a>
+		<p class="">
+			<a class="" href="/termine/">Alle kommenden Termine</a>
 		</p>
-	</section>
+	</article>
 </BaseLayout>

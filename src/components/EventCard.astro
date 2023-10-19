@@ -1,11 +1,22 @@
 ---
-import DateTime from './DateTime.astro'
+import type { CollectionEntry } from "astro:content";
+import DateTime from "./DateTime.astro"
 
-const { date, dateEnd, time, timeEnd, title, place } = Astro.props
+type Props = { event: CollectionEntry<'termine'> }
+
+const { event } = Astro.props
 ---
 
-<article class="p-5 border-b-2 bg-gradient-to-b from-white to-gray-100 hover:underline">
-  <h3>{title}</h3>
-  <DateTime date={date} dateEnd={dateEnd} { time } { timeEnd } />
-  <p>{place}</p>
+<article class="card card-body">
+    <h3 class="card-title h5">{event.data.title}</h3>
+    <DateTime
+        date={event.data?.date}
+        dateEnd={event.data?.dateEnd}
+        time={event.data?.time}
+        timeEnd={event.data?.timeEnd}
+    />
+    <p>{event.data?.place}</p>
+    <p class="text-end mb-0">
+        <a class="" href={`/${event.collection}/${event.slug}`}>mehr</a>
+    </p>
 </article>

@@ -2,29 +2,27 @@
 const currentPath = Astro.url.pathname
 ---
 
-<nav class="shadow bg-gradient-to-tr from-red-600 to-red-400 flex">
-  <ul class="h-16 px-5 flex items-center justify-between gap-5">
-    <li>
-      <a
-        href="/"
-        aria-current={currentPath === "/" ? "page" : false}
-      >
-        Start
-      </a>
-    </li>
-    <li>
-      <a
+<nav class="navbar bg-body-tertiary">
+  <div class="container">
+    <a
+      class="navbar-brand"
+      href="/"
+      aria-current={currentPath === "/" ? "page" : false}
+    >
+      <img src="/favicon.svg" alt="" width="30" height="24" class="d-inline-block"/>
+      Grönauer Infos
+    </a>
+    
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a
+        class="nav-link"
         href="/termine/"
         aria-current={currentPath === "/termine/" ? "page" : false}
-      >
-        Termine
-      </a>
-    </li>
-  </ul>
+        >
+          Termine
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
-
-<style>
-  a[aria-current="page"] {
-    text-decoration: underline;
-  }
-</style>
