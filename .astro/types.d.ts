@@ -301,6 +301,13 @@ declare module 'astro:content' {
   collection: "termine";
   data: InferEntrySchema<"termine">
 } & { render(): Render[".md"] };
+"2023-11-25-mini-weihnachtsmarkt.md": {
+	id: "2023-11-25-mini-weihnachtsmarkt.md";
+  slug: "2023-11-25-mini-weihnachtsmarkt";
+  body: string;
+  collection: "termine";
+  data: InferEntrySchema<"termine">
+} & { render(): Render[".md"] };
 "2023-12-13-spielenachmittag-mobile-spielothek.md": {
 	id: "2023-12-13-spielenachmittag-mobile-spielothek.md";
   slug: "2023-12-13-spielenachmittag-mobile-spielothek";

@@ -20,6 +20,38 @@ const { Content } = await event.render()
 ---
 
 <BaseLayout title={event.data.title}>
+	<style>
+		article {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			grid-template-rows: auto 1fr auto;
+			grid-template-areas: 
+				"header img"
+				"list img"
+				"body body"
+				"img2 img2";
+			column-gap: 1rem;
+		}
+		article * {
+			grid-area: body;
+		}
+		article hgroup,
+		article h1 {
+			grid-area: header;
+		}
+		article img {
+			grid-area: img;
+			justify-self: end;
+		}
+		@media (max-width: 768px) {
+			article img {
+				grid-area: img2;
+			}
+		}
+		article dl {
+			grid-area: list;
+		}
+	</style>
 	<article>
 		{event.data.subtitle ?
 			<hgroup class="my-5">
@@ -30,9 +62,7 @@ const { Content } = await event.render()
 		}
 
 		<dl>
-			<dt class="fw-lighter">
-				Wann?
-			</dt>
+			<dt class="fw-lighter">Wann?</dt>
 			<dd>
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
 					<path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
@@ -58,10 +88,23 @@ const { Content } = await event.render()
 				<dt class="fw-lighter">Preis</dt>
 				<dd>
 					{Number(event.data.price) ? event.data.price : 'kostenlos'}
-				</dd>
+					</dd>
 			)}
 		</dl>
-		<hr />
-		<Content />
+
+		{event.data.image && 
+			<img
+				src={event.data.image}
+				alt="" 
+				class="img-fluid py-4"
+				// width="600"
+				// height="800"
+			/>
+		}
+
+		<section>
+			<hr />
+			<Content />
+		</section>
 	</article>
 </BaseLayout>
