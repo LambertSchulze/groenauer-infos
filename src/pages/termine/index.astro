@@ -15,7 +15,7 @@ const events = (await getCollection('termine'))
     <ol class="row p-0">
       {events.map(event => (
         <li class="my-2" style={{'listStyleType': 'none'}}>
-          <EventCard event={event} />
+          <EventCard {...event} />
         </li>
       ))}
     </ol>
