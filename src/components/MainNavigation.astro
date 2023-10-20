@@ -1,28 +1,34 @@
 ---
-const currentPath = Astro.url.pathname
+const currentPath = Astro.url.pathname;
 ---
 
 <nav class="navbar bg-body-tertiary">
-  <div class="container">
-    <a
-      class="navbar-brand"
-      href="/"
-      aria-current={currentPath === "/" ? "page" : false}
-    >
-      <img src="./favicon.svg" alt="" width="30" height="24" class="d-inline-block"/>
-      Grönauer Infos
-    </a>
-    
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a
-        class="nav-link"
-        href="/termine/"
-        aria-current={currentPath === "/termine/" ? "page" : false}
-        >
-          Termine
-        </a>
-      </li>
-    </ul>
-  </div>
+	<div class="container">
+		<a
+			class="navbar-brand"
+			href="/"
+			aria-current={currentPath === "/" ? "page" : false}
+		>
+			<img
+				src="/favicon.svg"
+				alt=""
+				width="30"
+				height="24"
+				class="d-inline-block"
+			/>
+			 Grönauer Infos
+		</a>
+
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a
+					class="nav-link"
+					href="/termine/"
+					aria-current={currentPath === "/termine/" ? "page" : false}
+				>
+					Termine
+				</a>
+			</li>
+		</ul>
+	</div>
 </nav>
