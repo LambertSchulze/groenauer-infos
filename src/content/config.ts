@@ -11,6 +11,7 @@ const termine = defineCollection({
         timeEnd:    z.string().optional(),
         image:      z.string().optional(),
         cardLayout: z.string().optional(),
+        categories: z.array(z.string()).optional(),
         place:      reference('orte'),
         place_info: z.string().optional(),
         price:      z.string().optional(),
