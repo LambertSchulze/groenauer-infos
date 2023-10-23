@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+import EventCard from "./EventCard.astro";
+type Props = {
+    items: CollectionEntry<"termine">[];
+};
+
+const { items } = Astro.props;
+---
+
+{
+    !Boolean(items.length) ? (
+        <p>nix los in Grönau 🫥</p>
+    ) : (
+        <ol class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 p-0">
+            {items.map((item) => (
+                <EventCard {...item} />
+            ))}
+        </ol>
+    )
+}

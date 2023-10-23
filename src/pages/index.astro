@@ -1,48 +1,71 @@
 ---
-import { getCollection } from 'astro:content'
-import BaseLayout from '../layouts/BaseLayout.astro'
-import EventCard from '../components/EventCard.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Masonry from "../components/Masonry.astro";
 
-const events = (await getCollection('termine'))
-				.filter(event => new Date() <= new Date(event.data.date)
-						&& new Date(event.data.date) <= new Date(Date.now() + ((1000 * 60 * 60 * 24) * 60)))
+const events = (await getCollection("termine")).filter(
+	(event) =>
+		new Date() <= new Date(event.data.date) &&
+		new Date(event.data.date) <=
+			new Date(Date.now() + 1000 * 60 * 60 * 24 * 60),
+);
 ---
 
 <BaseLayout>
-	<div class="my-5 d-flex justify-content-between align-items-center">
-		<hgroup class="flex-grow-1">
+	<header class="my-6 row">
+		<hgroup class="col-12 col-md-6 col-xxl-4">
 			<h1 class="display-5 fw-bold">Grönauer Infos</h1>
 			<p class="lead">Die digitale Infotafel</p>
 		</hgroup>
 
 		<iframe
-			class="p-2 rounded-start-4 rounded-top-4 d-none d-md-block"
-			width="450"
+			class="d-none d-md-block col-md-6 col-xxl-8 ratio-4x3 height-100"
 			height="350"
-			src="https://www.openstreetmap.org/export/embed.html?bbox=10.726518630981447%2C53.79725437139942%2C10.751237869262695%2C53.82758460006296&amp;layer=mapnik"
-		/>
-	</div>
+			src="https://www.openstreetmap.org/export/embed.html?bbox=10.726518630981447%2C53.79725437139942%2C10.751237869262695%2C53.82758460006296&layer=mapnik"
+		></iframe>
+	</header>
 
-	<article class="my-5">
+	<article class="my-6">
 		<h2 class="">Anstehende Termine</h2>
-		<ol data-masonry='{"percentPosition": true }' class="row p-0">
-			{events.map(event => (
-				<li class="col-sm-6 col-lg-4 md-4 my-2" style={{'listStyleType': 'none'}}>
-					<EventCard {...event} />
-				</li>
-			))}
-		</ol>
+		<Masonry items={events} />
+
 		<p class="">
 			<a class="" href="/termine/">Alle kommenden Termine</a>
 		</p>
 	</article>
 
-	<section class="my-5 bg-info-subtle border-start border-info border-5">
-		<p class="p-3">
-			Du weißt was in Grönau los ist und was andere auch wissen sollten?<br />
-			Schreib einfach eine Mail an
-			<a href="mailto:info@groenauer-infos.de">info@groenauer-infos.de</a>
-			und mach mit!
+	<article class="my-6">
+		<h2>Über Grönau</h2>
+		<ul class="list-group">
+			<li class="list-group-item"><b>3824</b> Einwohner</li>
+			<li class="list-group-item"><b>4,9 km<sup>2</sup></b> Fläche</li>
+			<li class="list-group-item"><b>7 m</b> über dem Meeresspiegel</li>
+		</ul>
+		<p>
+			<small>(laut <a
+					href="https://de.wikipedia.org/wiki/Gro%C3%9F_Gr%C3%B6nau"
+					>Wikipedia</a>)
+			</small>
 		</p>
-	</section>
+
+		<p>
+			Grönau ist die nördlichste Gemeinde im südlichsten Landkreis des
+			nördlichsten deutschen Bundeslandes. Es ist fest an Lübeck
+			angebunden und hat keine eigenen Ortsteile.
+		</p>
+
+		<p>
+			Früher hieß der Ort <i>Gronow</i>&mdash;wie der Name schließlich zu
+			Grönau wurde ist nicht bekannt.
+		</p>
+	</article>
+
+	<aside class="my-6 bg-info-subtle border-start border-info border-5">
+		<p class="p-3">
+			Du weißt was in Grönau los ist und was andere auch wissen sollten?<br/>
+			 Schreib einfach eine Mail an
+			<a href="mailto:info@groenauer-infos.de">info@groenauer-infos.de</a>
+			 und mach mit!
+		</p>
+	</aside>
 </BaseLayout>

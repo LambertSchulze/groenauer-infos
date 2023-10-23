@@ -4,10 +4,21 @@ import DateTime from "./DateTime.astro";
 import CollectionLink from "./CollectionLink.astro";
 import Clock from "./Icons/Clock.astro";
 import Pin from "./Icons/Pin.astro";
+import CategoryBadges from "./CategoryBadges.astro";
 type Props = CollectionEntry<"termine">;
 
 const {
-	data: { image, title, date, dateEnd, time, timeEnd, place, cardLayout },
+	data: {
+		image,
+		title,
+		date,
+		dateEnd,
+		time,
+		timeEnd,
+		place,
+		cardLayout,
+		categories,
+	},
 	collection,
 	slug,
 } = Astro.props;
@@ -16,35 +27,49 @@ const {
 } = await getEntry(place.collection, place.id);
 ---
 
-<article class="card">
-	{
-		cardLayout ? (
-			<div class="img-card">
-				<img src={image} class="card-img img-fluid" alt="" />
-				<a class="stretched-link" href={`/${collection}/${slug}`} />
-			</div>
-		) : (
-			<div class="card-body">
-				<h3 class="card-title h5">{title}</h3>
-				<p class="card-text">
-					<Clock />
-					&NonBreakingSpace;
-					<DateTime
-						date={date}
-						dateEnd={dateEnd}
-						time={time}
-						timeEnd={timeEnd}
-						dateStyle="medium"
-					/>
-				</p>
-				<p class="card-text">
-					<Pin />
-					&NonBreakingSpace;{ortName}
-				</p>
-				<p class="card-text text-end">
-					<CollectionLink css="stretched-link" text="mehr" entry={Astro.props} />
-				</p>
-			</div>
-		)
-	}
-</article>
+<li>
+	<article
+		class:list={[
+			"card",
+			categories?.map((v) => "category-" + v.toLowerCase()),
+		]}
+	>
+		{
+			cardLayout ? (
+				<div class="img-card">
+					<img src={image} class="card-img img-fluid" alt="" />
+					<CategoryBadges {categories} wrapperCSS="card-img-overlay" badgeCSS="position-absolute bottom-0" />
+					<a class="stretched-link" href={`/${collection}/${slug}`} />
+				</div>
+			) : (
+				<div class="card-body">
+					<h3 class="card-title h5">{title}</h3>
+					<p class="card-text">
+						<Clock />&NonBreakingSpace;<DateTime
+							{date}
+							{dateEnd}
+							{time}
+							{timeEnd}
+							dateStyle="medium"
+						/>
+					</p>
+					<p class="card-text">
+						<Pin />&NonBreakingSpace;{ortName}
+					</p>
+					<CategoryBadges {categories} />
+					<p class="card-text text-end">
+						<CollectionLink
+							css="stretched-link"
+							text="mehr"
+							entry={Astro.props}
+						/>
+					</p>
+				</div>
+			)
+		}
+	</article>
+</li>
+
+<style>
+	li { list-style-type: none; }
+</style>
