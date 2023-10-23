@@ -1,37 +1,50 @@
 ---
-import type { CollectionEntry } from "astro:content"
-import DateTime from "./DateTime.astro"
-import Clock from "./Icons/Clock.astro"
-import Pin from "./Icons/Pin.astro"
-type Props = CollectionEntry<'termine'>
+import { getEntry, type CollectionEntry } from "astro:content";
+import DateTime from "./DateTime.astro";
+import CollectionLink from "./CollectionLink.astro";
+import Clock from "./Icons/Clock.astro";
+import Pin from "./Icons/Pin.astro";
+type Props = CollectionEntry<"termine">;
 
-const { image, title, date, dateEnd, time, timeEnd, place } = Astro.props.data
-const { collection, slug } = Astro.props
+const {
+	data: { image, title, date, dateEnd, time, timeEnd, place, cardLayout },
+	collection,
+	slug,
+} = Astro.props;
+const {
+	data: { name: ortName },
+} = await getEntry(place.collection, place.id);
 ---
 
 <article class="card">
-    {image ?
-        <div class="img-card">
-            <img src={image} class="card-img img-fluid" alt="" />
-            <a class="stretched-link" href={`/${collection}/${slug}`}></a>
-        </div> :
-        <div class="card-body">
-            <h3 class="card-title h5">{title}</h3>
-            <p class="card-text">
-                <Clock/>&NonBreakingSpace;<DateTime
-                    date={date}
-                    dateEnd={dateEnd}
-                    time={time}
-                    timeEnd={timeEnd}
-                    dateStyle="medium"
-                />
-            </p>
-            <p class="card-text">
-                <Pin/>&NonBreakingSpace;{place}
-            </p>
-            <p class="card-text text-end">
-                <a class="stretched-link" href={`/${collection}/${slug}`}>mehr</a>
-            </p>
-        </div>
-    }
+	{
+		cardLayout ? (
+			<div class="img-card">
+				<img src={image} class="card-img img-fluid" alt="" />
+				<a class="stretched-link" href={`/${collection}/${slug}`} />
+			</div>
+		) : (
+			<div class="card-body">
+				<h3 class="card-title h5">{title}</h3>
+				<p class="card-text">
+					<Clock />
+					&NonBreakingSpace;
+					<DateTime
+						date={date}
+						dateEnd={dateEnd}
+						time={time}
+						timeEnd={timeEnd}
+						dateStyle="medium"
+					/>
+				</p>
+				<p class="card-text">
+					<Pin />
+					&NonBreakingSpace;{ortName}
+				</p>
+				<p class="card-text text-end">
+					<CollectionLink css="stretched-link" text="mehr" entry={Astro.props} />
+				</p>
+			</div>
+		)
+	}
 </article>

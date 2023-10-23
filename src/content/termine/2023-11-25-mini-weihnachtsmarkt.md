@@ -3,8 +3,9 @@
     date: '2023-11-25'
     time: '14:00:00+01:00'
     timeEnd: '20:00:00+01:00'
-    place: 'Grönau Forum'
+    place: 'groenau-forum'
     image: '/images/2023-11-25-mini-weihnachtsmarkt.jpeg'
+    cardLayout: 'poster'
 ---
 
 Dieser Weihnachtsmarkt ist eine Elterninitiative der Kindertagesstätte St. Willehad.

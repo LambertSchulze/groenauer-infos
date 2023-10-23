@@ -1,9 +1,9 @@
 ---
-  title: 'Spielenachmittag der "Mobilen Spielothek"'
+  title: 'Spielenachmittag der "Mobilen Spieliothek"'
   date: '2023-05-24'
   time: '15:00:00+02:00'
   timeEnd: '16:30:00+02:00'
-  place: 'Gemeindehaus'
+  place: 'gemeindehaus-st-willehad'
 ---
 
 Ihr seid eingeladen zum Spielenachmittag der "Mobilen Spieliothek".

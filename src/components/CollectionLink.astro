@@ -1,0 +1,30 @@
+---
+import { type CollectionEntry, type CollectionKey } from "astro:content";
+
+type Props = {
+	entry: CollectionEntry<CollectionKey>;
+	css?: string;
+	text?: string;
+};
+
+const { entry, css, text } = Astro.props;
+---
+
+{
+	entry.collection === "orte" &&
+		(entry.id === "groenau" ? (
+			<span class={css}>{text ?? entry.data.name}</span>
+		) : (
+			<a class={css} href={`/${entry.collection}/${entry.id}`}>
+				{text ?? entry.data.name}
+			</a>
+		))
+}
+
+{
+	entry.collection === "termine" && (
+		<a class={css} href={`/${entry.collection}/${entry.slug}`}>
+			{text ?? entry.data.title}
+		</a>
+	)
+}

@@ -175,44 +175,9 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"termine": {
-"2022-08-21-flohmarkt.md": {
-	id: "2022-08-21-flohmarkt.md";
-  slug: "2022-08-21-flohmarkt";
-  body: string;
-  collection: "termine";
-  data: InferEntrySchema<"termine">
-} & { render(): Render[".md"] };
-"2022-10-30-konzert.md": {
-	id: "2022-10-30-konzert.md";
-  slug: "2022-10-30-konzert";
-  body: string;
-  collection: "termine";
-  data: InferEntrySchema<"termine">
-} & { render(): Render[".md"] };
-"2022-12-03-joy-to-the-world.md": {
-	id: "2022-12-03-joy-to-the-world.md";
-  slug: "2022-12-03-joy-to-the-world";
-  body: string;
-  collection: "termine";
-  data: InferEntrySchema<"termine">
-} & { render(): Render[".md"] };
-"2023-01-18-bunter-seniorennachmittag.md": {
-	id: "2023-01-18-bunter-seniorennachmittag.md";
-  slug: "2023-01-18-bunter-seniorennachmittag";
-  body: string;
-  collection: "termine";
-  data: InferEntrySchema<"termine">
-} & { render(): Render[".md"] };
 "2023-01-25-spielenachmittag-mobile-spielothek.md": {
 	id: "2023-01-25-spielenachmittag-mobile-spielothek.md";
   slug: "2023-01-25-spielenachmittag-mobile-spielothek";
-  body: string;
-  collection: "termine";
-  data: InferEntrySchema<"termine">
-} & { render(): Render[".md"] };
-"2023-02-12-karnevals-konzert.md": {
-	id: "2023-02-12-karnevals-konzert.md";
-  slug: "2023-02-12-karnevals-konzert";
   body: string;
   collection: "termine";
   data: InferEntrySchema<"termine">
@@ -294,6 +259,13 @@ declare module 'astro:content' {
   collection: "termine";
   data: InferEntrySchema<"termine">
 } & { render(): Render[".md"] };
+"2023-11-15-leben-mit-demenz.md": {
+	id: "2023-11-15-leben-mit-demenz.md";
+  slug: "2023-11-15-leben-mit-demenz";
+  body: string;
+  collection: "termine";
+  data: InferEntrySchema<"termine">
+} & { render(): Render[".md"] };
 "2023-11-22-spielenachmittag-mobile-spielothek.md": {
 	id: "2023-11-22-spielenachmittag-mobile-spielothek.md";
   slug: "2023-11-22-spielenachmittag-mobile-spielothek";
@@ -320,7 +292,24 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		
+		"orte": {
+"gemeindehaus-st-willehad": {
+	id: "gemeindehaus-st-willehad";
+  collection: "orte";
+  data: InferEntrySchema<"orte">
+};
+"groenau": {
+	id: "groenau";
+  collection: "orte";
+  data: InferEntrySchema<"orte">
+};
+"groenau-forum": {
+	id: "groenau-forum";
+  collection: "orte";
+  data: InferEntrySchema<"orte">
+};
+};
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;

@@ -1,0 +1,10 @@
+{
+    "name": "Gemeindezentrum St. Willehad",
+    "address": {
+        "street": "Berliner Straße",
+        "house_number": "2",
+        "postal_code": 23627,
+        "city": "Groß Grönau"
+    },
+    "map": "https://www.openstreetmap.org/export/embed.html?bbox=10.72446405887604%2C53.82078786223936%2C10.729721188545227%2C53.82274007799957&amp;layer=mapnik&amp;marker=53.821763981489035%2C10.727092623710632"
+}
