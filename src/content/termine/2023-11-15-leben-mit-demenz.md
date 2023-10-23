@@ -6,7 +6,8 @@
     place: "groenau-forum"
     place_info: "Großer Sitzungssaal" 
     price: "0"
-    categories: "Vortrag"
+    categories: 
+        - "Vortrag"
     source: "Bürgermeisterbrief"
     source_url: "https://gross-groenau.de/tl_files/Buergermeisterbrief/Bgm-Brief%20III.%202023%202.%20H%C3%A4lfte%20Herbst%20aktuell.pdf"
 ---

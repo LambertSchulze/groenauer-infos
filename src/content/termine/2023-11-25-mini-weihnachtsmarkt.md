@@ -6,6 +6,8 @@
     place: 'groenau-forum'
     image: '/images/2023-11-25-mini-weihnachtsmarkt.jpeg'
     cardLayout: 'poster'
+    categories:
+        - "Markt"
 ---
 
 Dieser Weihnachtsmarkt ist eine Elterninitiative der Kindertagesstätte St. Willehad.
