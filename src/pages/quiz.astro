@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+let test: any = "hello";
+
+if (Astro.request.method === "POST") {
+    try {
+        const data = await Astro.request.formData();
+        test = data.get("test");
+        console.log(test)
+    } catch (error) {
+        if (error instanceof Error)
+        console.error(error.message)
+    }
+}
+---
+
+<BaseLayout title="Quizz">
+    <h1 class="my-5">Grönau Quizz</h1>
+    <div>
+        <form method="POST">
+            <label>
+                Test:
+                <input type="text" name="test" required />
+            </label>
+            <button>Submit</button>
+        </form>
+    
+        <output>{test}</output>
+
+    </div>
+</BaseLayout>
