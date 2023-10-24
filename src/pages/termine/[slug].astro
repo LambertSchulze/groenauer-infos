@@ -39,43 +39,6 @@ const { Content } = await Astro.props.render();
 ---
 
 <BaseLayout title={title}>
-	<style>
-		article {
-			display: grid;
-			grid-template-columns: auto 1fr;
-			grid-template-rows: auto 1fr auto;
-			grid-template-areas:
-				"header img"
-				"list img"
-				"body body"
-				"img2 img2"
-				"footer footer";
-			column-gap: 1rem;
-		}
-		article * {
-			grid-area: body;
-		}
-		article hgroup,
-		article h1 {
-			grid-area: header;
-		}
-		article img {
-			grid-area: img;
-			justify-self: center;
-			max-width: 400px;
-		}
-		@media (max-width: 768px) {
-			article img {
-				grid-area: img2;
-			}
-		}
-		article dl {
-			grid-area: list;
-		}
-		article footer {
-			grid-area: footer;
-		}
-	</style>
 	<article>
 		{
 			subtitle ? (
@@ -127,11 +90,10 @@ const { Content } = await Astro.props.render();
 					<hr />
 					<small>
 						<b>Quelle: </b>
-
 						{source_url ? (
 							<a href={source_url}>{source}</a>
 						) : (
-							{ source }
+							{source}
 						)}
 					</small>
 				</footer>
@@ -139,3 +101,41 @@ const { Content } = await Astro.props.render();
 		}
 	</article>
 </BaseLayout>
+
+<style>
+	article {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: auto 1fr auto;
+		grid-template-areas:
+			"header img"
+			"list img"
+			"body body"
+			"img2 img2"
+			"footer footer";
+		column-gap: 1rem;
+	}
+	article * {
+		grid-area: body;
+	}
+	article hgroup,
+	article h1 {
+		grid-area: header;
+	}
+	article img {
+		grid-area: img;
+		justify-self: center;
+		max-width: 400px;
+	}
+	@media (max-width: 768px) {
+		article img {
+			grid-area: img2;
+		}
+	}
+	article dl {
+		grid-area: list;
+	}
+	article footer {
+		grid-area: footer;
+	}
+</style>

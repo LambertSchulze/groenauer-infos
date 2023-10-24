@@ -1,0 +1,73 @@
+---
+type Props = {
+	data: {
+		num: number;
+		max: number;
+		title: string;
+		labels: string[];
+	};
+};
+
+const {
+	data: { num, max, title, labels },
+} = Astro.props;
+
+const name = num.toString();
+---
+
+<fieldset class="mb-3 card p-2">
+	<legend set:html={title} class="" />
+
+	<div class="form-check">
+		<input
+			class="form-check-input"
+			type="radio"
+			{name}
+			id={labels[0]}
+			value={1}
+			required
+		/>
+		<label class="form-check-label w-100" for={labels[0]}>
+			{labels[0]}
+		</label>
+	</div>
+	<div class="form-check">
+		<input
+			class="form-check-input"
+			type="radio"
+			{name}
+			id={labels[1]}
+			value={2}
+			required
+		/>
+		<label class="form-check-label w-100" for={labels[1]}>
+			{labels[1]}
+		</label>
+	</div>
+	<div class="form-check">
+		<input
+			class="form-check-input"
+			type="radio"
+			{name}
+			id={labels[2]}
+			value={3}
+			required
+		/>
+		<label class="form-check-label w-100" for={labels[2]}>
+			{labels[2]}
+		</label>
+	</div>
+	<div class="form-check">
+		<input
+			class="form-check-input"
+			type="radio"
+			{name}
+			id={labels[3]}
+			value={4}
+			required
+		/>
+		<label class="form-check-label w-100" for={labels[3]}>
+			{labels[3]}
+		</label>
+	</div>
+</fieldset>

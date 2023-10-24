@@ -1,13 +1,14 @@
 ---
-import { getCollection } from 'astro:content'
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import Masonry from '../../components/Masonry.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Masonry from "../../components/Masonry.astro";
 
-const events = (await getCollection('termine'))
-                .filter(event => new Date() <= new Date(event.data.date))
+const events = (await getCollection("termine")).filter(
+	(event) => new Date() <= new Date(event.data.date),
+);
 ---
 
-<BaseLayout title='Termine'>
-  <h1 class="my-5">Kommende Termine</h1>
-  <Masonry items={events} />
+<BaseLayout title="Termine">
+	<h1 class="my-5">Kommende Termine</h1>
+	<Masonry items={events} />
 </BaseLayout>

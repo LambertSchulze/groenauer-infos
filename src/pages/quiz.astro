@@ -1,32 +1,107 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import QuizFrage from "../components/Quiz/QuizFrage.astro";
 
-let test: any = "hello";
-
-if (Astro.request.method === "POST") {
-    try {
-        const data = await Astro.request.formData();
-        test = data.get("test");
-        console.log(test)
-    } catch (error) {
-        if (error instanceof Error)
-        console.error(error.message)
-    }
-}
+const questions = [
+	{
+		title: "Welche Blume ist auf dem grönauer Wappen?",
+		labels: ["Rose", "Nelke", "Lilie", "Gänseblümchen"],
+		answer: 3,
+	},
+	{
+		title: "Den wievielten Geburtstag hat die Gemeinde 2007 gefeiert?",
+		labels: ["888", "777", "666", "555"],
+		answer: 2,
+	},
+	{
+		title: "Um wie viele Einwohner ist Grönau zwischen 1858&ndash;1937 gewachsen?",
+		labels: ["1234", "420", "69", "13"],
+		answer: 4,
+	},
+];
 ---
 
-<BaseLayout title="Quizz">
-    <h1 class="my-5">Grönau Quizz</h1>
-    <div>
-        <form method="POST">
-            <label>
-                Test:
-                <input type="text" name="test" required />
-            </label>
-            <button>Submit</button>
-        </form>
-    
-        <output>{test}</output>
+<script>
+	const questions = [
+		{
+			title: "Welche Blume ist auf dem grönauer Wappen?",
+			labels: ["Rose", "Nelke", "Lilie", "Gänseblümchen"],
+			answer: 3,
+		},
+		{
+			title: "Den wievielten Geburtstag hat die Gemeinde 2007 gefeiert?",
+			labels: ["888", "777", "666", "555"],
+			answer: 2,
+		},
+		{
+			title: "Um wie viele Einwohner ist Grönau zwischen 1858&ndash;1937 gewachsen?",
+			labels: ["1234", "420", "69", "13"],
+			answer: 4,
+		},
+	];
 
-    </div>
+	const answers = new URLSearchParams(document.location.search);
+	const form = document.getElementById("form");
+	const score = document.getElementById("score");
+
+	if (answers.size && form && score) {
+		form.classList.add("d-none");
+		score.classList.remove("d-none");
+
+		questions.map((q, id) => {
+			const userAnswer = Number(answers.get(String(id + 1)));
+
+			const wrapperEl = document.createElement("dl");
+			wrapperEl.classList.add("alert");
+
+			const titleEl = document.createElement("dt");
+			titleEl.classList.add("fw-lighter");
+			titleEl.innerHTML = q.title;
+			wrapperEl.append(titleEl);
+
+			if (userAnswer === q.answer) {
+				wrapperEl.classList.add("alert-success");
+			} else {
+				wrapperEl.classList.add("alert-danger");
+
+				const userAnswerEl = document.createElement("dd");
+				userAnswerEl.classList.add("text-decoration-line-through");
+				userAnswerEl.innerHTML = q.labels[userAnswer - 1];
+				wrapperEl.append(userAnswerEl);
+			}
+
+			const correctAnswerEl = document.createElement("dd");
+			correctAnswerEl.innerHTML = q.labels[q.answer - 1];
+			wrapperEl.append(correctAnswerEl);
+			score.append(wrapperEl);
+		});
+	}
+</script>
+
+<BaseLayout title="Quizz">
+	<h1 class="my-5">Grönau Quiz</h1>
+
+	<section id="score" class="my-5 d-none" role="alert"></section>
+
+	<form id="form" class="my-5">
+		{
+			questions.map((q, id, arr) => (
+				<QuizFrage
+					data={{
+						num: id + 1,
+						max: arr.length,
+						...q,
+					}}
+				/>
+			))
+		}
+		<button class="btn btn-primary">Auflösen</button>
+	</form>
+
+	<noscript>
+		<details>
+			<summary class="h2">Antworten anzeigen</summary>
+			{[...questions.map(q => q.answer)].join(', ')}
+		</details>
+	</noscript>
 </BaseLayout>
