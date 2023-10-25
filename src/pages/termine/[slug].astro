@@ -6,6 +6,7 @@ import DateTime from "../../components/DateTime.astro";
 import CollectionLink from "../../components/CollectionLink.astro";
 import Clock from "../../components/Icons/Clock.astro";
 import Pin from "../../components/Icons/Pin.astro";
+import People from "../../components/Icons/People.astro";
 
 export async function getStaticPaths() {
 	const events = await getCollection("termine");
@@ -30,6 +31,7 @@ const {
 		image,
 		place: { id: placeId },
 		place_info,
+		organiser,
 		source,
 		source_url,
 	},
@@ -39,7 +41,7 @@ const { Content } = await Astro.props.render();
 ---
 
 <BaseLayout title={title}>
-	<article>
+	<article class="mb-5">
 		{
 			subtitle ? (
 				<hgroup class="my-5">
@@ -51,7 +53,7 @@ const { Content } = await Astro.props.render();
 			)
 		}
 
-		<dl class="">
+		<dl>
 			<dt class="fw-lighter">Wann?</dt>
 			<dd>
 				<Clock />&NonBreakingSpace;<DateTime
@@ -75,6 +77,14 @@ const { Content } = await Astro.props.render();
 					</>
 				)
 			}
+			{
+				organiser && (
+					<>
+						<dt class="fw-lighter">Veranstalter</dt>
+						<dd>{organiser}</dd>
+					</>
+				)
+			}
 		</dl>
 
 		{image && <img src={image} alt="" class="img-fluid py-4" />}
@@ -93,7 +103,7 @@ const { Content } = await Astro.props.render();
 						{source_url ? (
 							<a href={source_url}>{source}</a>
 						) : (
-							{source}
+							{ source }
 						)}
 					</small>
 				</footer>

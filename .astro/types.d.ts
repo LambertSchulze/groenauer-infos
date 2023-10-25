@@ -210,6 +210,13 @@ declare module 'astro:content' {
   collection: "termine";
   data: InferEntrySchema<"termine">
 } & { render(): Render[".md"] };
+"2023-12-10-flohmarkt-zur-weihnachtszeit.md": {
+	id: "2023-12-10-flohmarkt-zur-weihnachtszeit.md";
+  slug: "2023-12-10-flohmarkt-zur-weihnachtszeit";
+  body: string;
+  collection: "termine";
+  data: InferEntrySchema<"termine">
+} & { render(): Render[".md"] };
 "2023-12-13-spielenachmittag-mobile-spielothek.md": {
 	id: "2023-12-13-spielenachmittag-mobile-spielothek.md";
   slug: "2023-12-13-spielenachmittag-mobile-spielothek";
@@ -235,6 +242,11 @@ declare module 'astro:content' {
 };
 "groenau-forum": {
 	id: "groenau-forum";
+  collection: "orte";
+  data: InferEntrySchema<"orte">
+};
+"groenau-halle": {
+	id: "groenau-halle";
   collection: "orte";
   data: InferEntrySchema<"orte">
 };

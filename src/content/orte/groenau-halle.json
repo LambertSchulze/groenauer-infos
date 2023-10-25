@@ -1,0 +1,10 @@
+{
+    "name": "Grönau Halle",
+    "address": {
+        "street": "Am Torfmoor",
+        "house_number": "1",
+        "postal_code": 23627,
+        "city": "Groß Grönau"
+    },
+    "map": "https://www.openstreetmap.org/export/embed.html?bbox=10.742668211460115%2C53.8087638182711%2C10.747925341129305%2C53.810715010469536&amp;layer=mapnik&amp;marker=53.80973942572297%2C10.745296776294708"
+}
