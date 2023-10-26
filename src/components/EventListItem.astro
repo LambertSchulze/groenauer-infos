@@ -1,0 +1,66 @@
+---
+import { getEntry, type CollectionEntry } from 'astro:content'
+import DateTime from "./DateTime.astro";
+import CollectionLink from "./CollectionLink.astro";
+import CategoryBadges from "./CategoryBadges.astro";
+import Clock from "./Icons/Clock.astro";
+import Pin from "./Icons/Pin.astro";
+import ArrowRight from './Icons/ArrowRight.astro';
+type Props = CollectionEntry<"termine">;
+
+const {
+	data: {
+		image,
+		title,
+		date,
+		dateEnd,
+		time,
+		timeEnd,
+		place,
+		cardLayout,
+		categories,
+	},
+	collection,
+	slug,
+} = Astro.props;
+const {
+	data: { name: ortName },
+} = await getEntry(place.collection, place.id);
+---
+
+<li class="border-start border-5 mb-2 ps-0" style={{willChange: 'transform'}}>
+    <article class="border-bottom border-1 ps-2 h-100 d-flex flex-column justify-content-between">
+        <div class="d-flex mb-2">
+            <h3 class="h5 mb-0 pe-0">{title}</h3>
+            <CategoryBadges wrapperCSS="ms-auto px-0" {categories} />
+        </div>
+
+        <div class="mb-1">
+            <div class="text-body-secondary">
+                <span class="d-block me-3">
+                    <Clock />&nbsp;<DateTime
+                        {date}
+                        {dateEnd}
+                        dateStyle="medium"
+                    />
+                </span>
+                <span class="d-block">
+                    <Pin />&nbsp;{ortName}
+                </span>
+            </div>
+    
+            <CollectionLink
+                css="ms-auto align-self-end icon-link icon-link-hover stretched-link text-decoration-none"
+                entry={Astro.props}>
+                <span class="visually-hidden">weitere Details zum Termin</span><ArrowRight />
+            </CollectionLink>
+            
+        </div>
+    </article>
+</li>
+
+<style>
+    li {
+        break-inside: avoid-column;
+    }
+</style>

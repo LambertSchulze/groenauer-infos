@@ -4,19 +4,20 @@ import { type CollectionEntry, type CollectionKey } from "astro:content";
 type Props = {
 	entry: CollectionEntry<CollectionKey>;
 	css?: string;
-	text?: string;
 };
 
-const { entry, css, text } = Astro.props;
+const { entry, css } = Astro.props;
 ---
 
 {
 	entry.collection === "orte" &&
 		(entry.id === "groenau" ? (
-			<span class={css}>{text ?? entry.data.name}</span>
+			<span class={css}>
+				<slot>{entry.data.name}</slot>
+			</span>
 		) : (
 			<a class={css} href={`/${entry.collection}/${entry.id}`}>
-				{text ?? entry.data.name}
+				<slot>{entry.data.name}</slot>
 			</a>
 		))
 }
@@ -24,7 +25,7 @@ const { entry, css, text } = Astro.props;
 {
 	entry.collection === "termine" && (
 		<a class={css} href={`/${entry.collection}/${entry.slug}`}>
-			{text ?? entry.data.title}
+			<slot>{entry.data.title}</slot>
 		</a>
 	)
 }

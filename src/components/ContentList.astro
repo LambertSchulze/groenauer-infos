@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry, CollectionKey } from 'astro:content';
+import EventListItem from "./EventListItem.astro";
+type Props = {
+    items: CollectionEntry<CollectionKey>[];
+    type: 'event';
+}
+
+const { items, type } = Astro.props;
+---
+
+{
+    !Boolean(items.length) ? (
+        <p>nix los in Grönau 🫥</p>
+    ) : (
+        <ol class="list-unstyled column-gap-4">
+            {items.map(item => (
+                type === 'event' && <EventListItem {...item as CollectionEntry<"termine">} />
+            ))}    
+        </ol>
+    )
+}
+
+<style>
+    ol {
+        columns: 2;
+    }
+</style>

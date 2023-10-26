@@ -38,14 +38,20 @@ const {
 			cardLayout ? (
 				<div class="img-card">
 					<img src={image} class="card-img img-fluid" alt="" />
-					<CategoryBadges {categories} wrapperCSS="card-img-overlay" badgeCSS="position-absolute bottom-0" />
+					<CategoryBadges
+						{categories}
+						wrapperCSS="card-img-overlay"
+						badgeCSS="position-absolute bottom-0"
+					/>
 					<a class="stretched-link" href={`/${collection}/${slug}`} />
 				</div>
 			) : (
 				<div class="card-body">
 					<h3 class="card-title h5">{title}</h3>
 					<p class="card-text">
-						<Clock />&NonBreakingSpace;<DateTime
+						<Clock />
+						&NonBreakingSpace;
+						<DateTime
 							{date}
 							{dateEnd}
 							{time}
@@ -54,15 +60,17 @@ const {
 						/>
 					</p>
 					<p class="card-text">
-						<Pin />&NonBreakingSpace;{ortName}
+						<Pin />
+						&NonBreakingSpace;{ortName}
 					</p>
 					<CategoryBadges {categories} />
 					<p class="card-text text-end">
 						<CollectionLink
 							css="stretched-link"
-							text="mehr"
 							entry={Astro.props}
-						/>
+						>
+							mehr
+						</CollectionLink>
 					</p>
 				</div>
 			)
@@ -71,5 +79,7 @@ const {
 </li>
 
 <style>
-	li { list-style-type: none; }
+	li {
+		list-style-type: none;
+	}
 </style>

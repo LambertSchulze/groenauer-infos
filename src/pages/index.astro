@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Masonry from "../components/Masonry.astro";
+import ContentList from "../components/ContentList.astro";
 
 const events = (await getCollection("termine")).filter(
 	(event) =>
@@ -27,9 +28,10 @@ const events = (await getCollection("termine")).filter(
 
 	<article class="my-6">
 		<h2 class="">Anstehende Termine</h2>
-		<Masonry items={events} />
+		<!-- <Masonry items={events} /> -->
+		<ContentList items={events} type="event" />
 
-		<p class="">
+		<p class="text-center">
 			<a class="" href="/termine/">Alle kommenden Termine</a>
 		</p>
 
@@ -52,17 +54,18 @@ const events = (await getCollection("termine")).filter(
 
 	<section class="my-6">
 		<h2>Über Grönau</h2>
-		<ul class="list-group">
-			<li class="list-group-item"><b>3824</b> Einwohner</li>
-			<li class="list-group-item"><b>4,9 km<sup>2</sup></b> Fläche</li>
-			<li class="list-group-item"><b>7 m</b> über dem Meeresspiegel</li>
-		</ul>
-		<p>
+		<div class="float-sm-start me-3">
+			<ul class="list-group">
+				<li class="list-group-item"><b>3824</b> Einwohner</li>
+				<li class="list-group-item"><b>4,9 km<sup>2</sup></b> Fläche</li>
+				<li class="list-group-item"><b>7 m</b> über dem Meeresspiegel</li>
+			</ul>
 			<small>(laut <a
 					href="https://de.wikipedia.org/wiki/Gro%C3%9F_Gr%C3%B6nau"
 					>Wikipedia</a>)
 			</small>
-		</p>
+		</div>
+
 
 		<p>
 			Grönau ist die nördlichste Gemeinde im südlichsten Landkreis des
