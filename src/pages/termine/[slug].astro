@@ -35,9 +35,35 @@ const {
 		source,
 		source_url,
 	},
+	body,
 } = Astro.props;
 const placeObject = await getEntry("orte", placeId);
 const { Content } = await Astro.props.render();
+
+const schemaData = {
+		  "@context": "https://schema.org",
+		  "@type": "Event",
+		  "name": title + (subtitle ? (' - ' + subtitle) : ''),
+		  "startDate": date + (time ? ('T' + time) : ''),
+		  "endDate": dateEnd + (timeEnd ? ('T' + timeEnd) : ''),
+		  "location": {
+			"@type": "Place",
+			"name": placeObject.data.name,
+			"address": {
+			  "@type": "PostalAddress",
+			  "streetAddress": placeObject.data.address.street + ' ' + placeObject.data.address.house_number,
+			  "addressLocality": placeObject.data.address.city,
+			  "postalCode": placeObject.data.address.postal_code,
+			  "addressCountry": "DE"
+			}
+		  },
+		  "image": image,
+		  "description": body,
+		  "organizer": {
+			"@type": "Organization",
+			"name": organiser,
+		  }
+		}
 ---
 
 <BaseLayout title={title}>
@@ -110,6 +136,8 @@ const { Content } = await Astro.props.render();
 			)
 		}
 	</article>
+
+	<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />	
 </BaseLayout>
 
 <style>
