@@ -196,6 +196,13 @@ declare module 'astro:content' {
   collection: "termine";
   data: InferEntrySchema<"termine">
 } & { render(): Render[".md"] };
+"2023-11-18-martinsmarkt.md": {
+	id: "2023-11-18-martinsmarkt.md";
+  slug: "2023-11-18-martinsmarkt";
+  body: string;
+  collection: "termine";
+  data: InferEntrySchema<"termine">
+} & { render(): Render[".md"] };
 "2023-11-22-spielenachmittag-mobile-spielothek.md": {
 	id: "2023-11-22-spielenachmittag-mobile-spielothek.md";
   slug: "2023-11-22-spielenachmittag-mobile-spielothek";
