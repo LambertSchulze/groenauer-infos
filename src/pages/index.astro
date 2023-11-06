@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Masonry from "../components/Masonry.astro";
+import Map from '../components/Map.astro';
 import ContentList from "../components/ContentList.astro";
 
 const events = (await getCollection("termine")).filter(
@@ -19,16 +19,20 @@ const events = (await getCollection("termine")).filter(
 			<p class="lead">Die digitale Infotafel</p>
 		</hgroup>
 
-		<iframe
+		<Map
+			x={0}
+			y={0}
+			wrapperCSS="d-none d-md-block col-md-6 col-xxl-8 ratio-4x3 height-100"
+		/>
+		<!-- <iframe
 			class="d-none d-md-block col-md-6 col-xxl-8 ratio-4x3 height-100"
 			height="350"
 			src="https://www.openstreetmap.org/export/embed.html?bbox=10.726518630981447%2C53.79725437139942%2C10.751237869262695%2C53.82758460006296&layer=mapnik"
-		></iframe>
+		></iframe> -->
 	</header>
 
 	<article class="my-6">
 		<h2 class="">Anstehende Termine</h2>
-		<!-- <Masonry items={events} /> -->
 		<ContentList items={events} type="event" />
 
 		<p class="text-center">
@@ -38,18 +42,34 @@ const events = (await getCollection("termine")).filter(
 		<hr />
 
 		<p>
-			Weitere Termine und aktuelles aus dem Ort gibt es auf den folgenden Seiten.
+			Weitere Termine und aktuelles aus dem Ort gibt es auf den folgenden
+			Seiten.
 		</p>
 		<ul>
-			<li><a href="https://gross-groenau.de/">Gemeinde Groß Grönau</a></li>
-			<li><a href="https://www.kirche-gross-groenau.de/index.html">Ev.-Luth. Kirchengemeinde St. Willehad</a></li>
-			<li><a href="https://www.ln-online.de/themen/gross-groenau/">Grönau in den Lübecker Nachrichten (paywall)</a></li>
-			<li><a href="https://www.ff-grossgroenau.de/">Aktuelles von der Freiwilligen Feuerwehr</a></li>
+			<li>
+				<a href="https://gross-groenau.de/">Gemeinde Groß Grönau</a>
+			</li>
+			<li>
+				<a href="https://www.kirche-gross-groenau.de/index.html"
+					>Ev.-Luth. Kirchengemeinde St. Willehad</a>
+			</li>
+			<li>
+				<a href="https://www.ln-online.de/themen/gross-groenau/"
+					>Grönau in den Lübecker Nachrichten (paywall)</a>
+			</li>
+			<li>
+				<a href="https://www.ff-grossgroenau.de/"
+					>Aktuelles von der Freiwilligen Feuerwehr</a>
+			</li>
 			<li><a href="https://www.tsv-eintracht.de/">TSV Eintracht</a></li>
-			<li><a href="https://www.tc-hubertus.de/3/aktuelles/">Tennisclub Hubertus</a></li>
-			<li><a href="https://ws-gg.lernnetz.de/">Waldschule Groß Grönau</a></li>
+			<li>
+				<a href="https://www.tc-hubertus.de/3/aktuelles/"
+					>Tennisclub Hubertus</a>
+			</li>
+			<li>
+				<a href="https://ws-gg.lernnetz.de/">Waldschule Groß Grönau</a>
+			</li>
 		</ul>
-
 	</article>
 
 	<section class="my-6">
@@ -57,15 +77,20 @@ const events = (await getCollection("termine")).filter(
 		<div class="float-sm-start me-3">
 			<ul class="list-group">
 				<li class="list-group-item"><b>3824</b> Einwohner</li>
-				<li class="list-group-item"><b>4,9 km<sup>2</sup></b> Fläche</li>
-				<li class="list-group-item"><b>7 m</b> über dem Meeresspiegel</li>
+				<li class="list-group-item">
+					<b>4,9 km<sup>2</sup></b> Fläche
+				</li>
+				<li class="list-group-item">
+					<b>7 m</b> über dem Meeresspiegel
+				</li>
 			</ul>
-			<small>(laut <a
+			<small
+				>(laut <a
 					href="https://de.wikipedia.org/wiki/Gro%C3%9F_Gr%C3%B6nau"
-					>Wikipedia</a>)
+					>Wikipedia</a
+				>)
 			</small>
 		</div>
-
 
 		<p>
 			Grönau ist die nördlichste Gemeinde im südlichsten Landkreis des
@@ -79,17 +104,21 @@ const events = (await getCollection("termine")).filter(
 		</p>
 
 		<p>
-			<a href="https://gross-groenau.de/index.php/geschichte.html">Mehr über die Geschichte des Ortes</a> kannst du auf der offiziellen Seite der Gemeinde lesen.
+			<a href="https://gross-groenau.de/index.php/geschichte.html"
+				>Mehr über die Geschichte des Ortes</a
+			> kannst du auf der offiziellen Seite der Gemeinde lesen.
 		</p>
 
 		<p>
-			Wie gut kennst du dich aus? <a href="/quiz">Mach das Quiz</a> und finde es heraus.
+			Wie gut kennst du dich aus? <a href="/quiz">Mach das Quiz</a> und
+			finde es heraus.
 		</p>
 	</section>
 
 	<aside class="my-6 bg-info-subtle border-start border-info border-5">
 		<p class="p-3">
-			Du weißt was in Grönau los ist und was andere auch wissen sollten?<br/>
+			Du weißt was in Grönau los ist und was andere auch wissen sollten?<br
+			/>
 			 Schreib einfach eine Mail an
 			<a href="mailto:info@groenauer-infos.de">info@groenauer-infos.de</a>
 			 und mach mit!

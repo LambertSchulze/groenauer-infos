@@ -1,0 +1,45 @@
+---
+type Props = {
+    x: number,
+    y: number,
+    z?: number,
+    title?: string;
+    wrapperCSS?: string;
+}
+
+const { x, y, z, title, wrapperCSS } = Astro.props;
+---
+
+<div
+    id="map"
+    class={wrapperCSS}
+></div>
+
+<script>
+  import {Map, View} from 'ol';
+  import OSM from 'ol/source/OSM';
+  import TileLayer from 'ol/layer/WebGLTile';
+  import {fromLonLat} from 'ol/proj';
+
+  const place = [10.7477, 53.8094];
+  new Map({
+    target: 'map',
+    layers: [
+    new TileLayer({
+        source: new OSM({
+          attributions: '© <a href="https://www.openstreetmap.org/copyright">OSM contributors</a>'
+        })
+      }),
+    ],
+    view: new View({
+      center: fromLonLat(place),
+      zoom: 13,
+    }),
+  });
+</script>
+
+<style>
+  * {
+    font-size: small;
+  }
+</style>
