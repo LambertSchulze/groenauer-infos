@@ -5,12 +5,13 @@ type Props = {
     lon: number,
     lat: number,
     zoom?: number,
+    marker?: boolean,
     title?: string;
     wrapperCSS?: string;
     style?: any;
 }
 
-const { lon, lat, zoom, title, wrapperCSS, style } = Astro.props;
+const { lon, lat, zoom, marker, title, wrapperCSS, style } = Astro.props;
 ---
 
 <div
@@ -20,24 +21,43 @@ const { lon, lat, zoom, title, wrapperCSS, style } = Astro.props;
 ></div>
 
 
-<script define:vars={{ lon, lat, zoom }}>
+<script define:vars={{ lon, lat, zoom, marker }}>
   window.lon = lon;
   window.lat = lat;
   window.zoom = zoom ?? 13;
+  window.marker = marker;
 </script>
 
 <script>
   import { Map, View } from 'ol';
-  import OSM from 'ol/source/OSM';
-  import TileLayer from 'ol/layer/WebGLTile';
+  import Feature from 'ol/Feature';
+  import Point from 'ol/geom/Point';
+  import { OSM, Vector as VectorSource } from 'ol/source';
+  import { Tile as TileLayer, Vector as VectorLayer, Image as ImageLayer } from 'ol/layer';
   import { fromLonLat } from 'ol/proj';
+  import {Circle, Fill, Stroke, Style} from 'ol/style';
+
+  const vectors = new VectorSource();
 
   new Map({
     target: 'map',
     layers: [
-    new TileLayer({
-        source: new OSM({
-          attributions: '© <a href="https://www.openstreetmap.org/copyright">OSM contributors</a>'
+      new TileLayer({
+        source: new OSM()
+      }),
+      new VectorLayer({
+        source: vectors,
+        style: new Style({
+          image: new Circle({
+            fill: new Fill({
+              color: '#ffeeee'
+            }),
+            stroke: new Stroke({
+              color: '#002222',
+              width: 2.5,
+            }),
+            radius: 10
+          }),
         })
       }),
     ],
@@ -46,6 +66,13 @@ const { lon, lat, zoom, title, wrapperCSS, style } = Astro.props;
       zoom: (window as any).zoom,
     }),
   });
+
+  if ((window as any).marker) {
+    const geom = new Point(fromLonLat([(window as any).lon, (window as any).lat]));
+    const feature = new Feature(geom);
+    vectors.addFeature(feature);
+  }
+
 </script>
 
 <style>

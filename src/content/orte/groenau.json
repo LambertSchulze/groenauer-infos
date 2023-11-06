@@ -5,5 +5,9 @@
         "house_number": "",
         "postal_code": 0,
         "city": ""
+    },
+    "coords": {
+        "lon": 10.7377,
+        "lat": 53.8094
     }
 }

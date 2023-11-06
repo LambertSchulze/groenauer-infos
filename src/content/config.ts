@@ -33,7 +33,10 @@ const orte = defineCollection({
             postal_code:  z.number(),
             city:         z.string()
         }),
-        map:     z.string().optional()
+        coords: z.object({
+            lon: z.number(),
+            lat: z.number()
+        }),
     })
 })
 

@@ -6,5 +6,8 @@
         "postal_code": 23627,
         "city": "Groß Grönau"
     },
-    "map": "https://www.openstreetmap.org/export/embed.html?bbox=10.74018180370331%2C53.80996115152276%2C10.7454389333725%2C53.811913871668175&amp;layer=mapnik&amp;marker=53.810938300497874%2C10.742809050000005"
+    "coords": {
+        "lon": 10.74280,
+        "lat": 53.81093
+    }
 }
