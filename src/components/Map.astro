@@ -1,27 +1,37 @@
 ---
+import '../../node_modules/ol/ol.css';
+
 type Props = {
-    x: number,
-    y: number,
-    z?: number,
+    lon: number,
+    lat: number,
+    zoom?: number,
     title?: string;
     wrapperCSS?: string;
+    style?: any;
 }
 
-const { x, y, z, title, wrapperCSS } = Astro.props;
+const { lon, lat, zoom, title, wrapperCSS, style } = Astro.props;
 ---
 
 <div
     id="map"
     class={wrapperCSS}
+    {style}
 ></div>
 
+
+<script define:vars={{ lon, lat, zoom }}>
+  window.lon = lon;
+  window.lat = lat;
+  window.zoom = zoom ?? 13;
+</script>
+
 <script>
-  import {Map, View} from 'ol';
+  import { Map, View } from 'ol';
   import OSM from 'ol/source/OSM';
   import TileLayer from 'ol/layer/WebGLTile';
-  import {fromLonLat} from 'ol/proj';
+  import { fromLonLat } from 'ol/proj';
 
-  const place = [10.7477, 53.8094];
   new Map({
     target: 'map',
     layers: [
@@ -32,14 +42,14 @@ const { x, y, z, title, wrapperCSS } = Astro.props;
       }),
     ],
     view: new View({
-      center: fromLonLat(place),
-      zoom: 13,
+      center: fromLonLat([(window as any).lon, (window as any).lat]),
+      zoom: (window as any).zoom,
     }),
   });
 </script>
 
 <style>
-  * {
-    font-size: small;
+  #map {
+    min-height: 350px;
   }
 </style>
