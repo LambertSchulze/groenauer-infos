@@ -1,7 +1,7 @@
 ---
   title: 'Herbst Häckselaktion'
   date: '2023-11-06'
-  time: "07:00:00+01:00"
+  time: "07:00:00"
   place: "groenau"
   price: '0'
   organizer: "Gemeinde Gross Grönau"

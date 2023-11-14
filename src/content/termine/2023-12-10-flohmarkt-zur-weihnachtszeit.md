@@ -1,8 +1,8 @@
 ---
   title: "Flohmarkt zur Weihnachtszeit"
   date: "2023-12-10"
-  time: "11:00:00+01:00"
-  timeEnd: "15:00:00+01:00"
+  time: "11:00:00"
+  timeEnd: "15:00:00"
   place: "groenau-halle"
   image: "/images/2023-12-10-flohmarkt-zur-weihnachtszeit.jpg"
   cardLayout: "poster"

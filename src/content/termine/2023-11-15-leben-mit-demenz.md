@@ -2,7 +2,7 @@
   title: "Leben mit Demenz"
   subtitle: "ein Vortrag für pflegende Angehörige"
   date: "2023-11-15"
-  time: "19:00:00+01:00"
+  time: "19:00:00"
   place: "groenau-forum"
   place_info: "Großer Sitzungssaal" 
   price: "0"

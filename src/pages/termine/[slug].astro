@@ -45,8 +45,8 @@ const schemaData = [{
 		  "@context": "https://schema.org",
 		  "@type": "Event",
 		  "name": title + (subtitle ? (' - ' + subtitle) : ''),
-		  "startDate": date + (time ? ('T' + time) : ''),
-		  "endDate": (dateEnd ?? date) + (timeEnd ? ('T' + timeEnd) : ''),
+		  "startDate": date + (time ? ('T' + time + (timeEnd ? ('-' + timeEnd) : '')) : ''),
+		  "endDate": dateEnd ? dateEnd + (timeEnd ? ('T' + timeEnd) : '') : '',
 		  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
 		  "eventStatus": "https://schema.org/EventScheduled",
 		  "location": {

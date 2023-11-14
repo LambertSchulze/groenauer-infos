@@ -1,8 +1,8 @@
 ---
   title: 'Spielenachmittag der "Mobilen Spieliothek"'
   date: '2023-11-01'
-  time: '15:00:00+01:00'
-  timeEnd: '16:30:00+01:00'
+  time: '15:00:00'
+  timeEnd: '16:30:00'
   place: 'gemeindehaus-st-willehad'
   organizer: "Kreisjugendring Herzogtum Lauenburg"
   organizer_url: "https://kjr-herzogtum-lauenburg.de/"
