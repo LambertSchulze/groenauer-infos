@@ -1,0 +1,13 @@
+{
+    "name": "Gemeindezentrum Gross Sarau",
+    "address": {
+        "street": "Klempauer Strasse",
+        "house_number": "5",
+        "postal_code": 23627,
+        "city": "Groß Sarau"
+    },
+    "coords": {
+        "lon": 10.73292,
+        "lat": 53.76826
+    }
+}

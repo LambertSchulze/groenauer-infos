@@ -189,6 +189,13 @@ declare module 'astro:content' {
   collection: "termine";
   data: InferEntrySchema<"termine">
 } & { render(): Render[".md"] };
+"2023-11-11-martinsmarkt-sarau.md": {
+	id: "2023-11-11-martinsmarkt-sarau.md";
+  slug: "2023-11-11-martinsmarkt-sarau";
+  body: string;
+  collection: "termine";
+  data: InferEntrySchema<"termine">
+} & { render(): Render[".md"] };
 "2023-11-15-leben-mit-demenz.md": {
 	id: "2023-11-15-leben-mit-demenz.md";
   slug: "2023-11-15-leben-mit-demenz";
@@ -239,6 +246,11 @@ declare module 'astro:content' {
 		"orte": {
 "gemeindehaus-st-willehad": {
 	id: "gemeindehaus-st-willehad";
+  collection: "orte";
+  data: InferEntrySchema<"orte">
+};
+"gemeindezentrum-sarau": {
+	id: "gemeindezentrum-sarau";
   collection: "orte";
   data: InferEntrySchema<"orte">
 };
