@@ -32,6 +32,7 @@ const {
 		place: { id: placeId },
 		place_info,
 		organizer,
+		artist,
 		source,
 		source_url,
 	},
@@ -64,6 +65,10 @@ const schemaData = [{
 		  "organizer": {
 			"@type": "Organization",
 			"name": organizer,
+		  },
+		  "performer": {
+			"@type": artist ? "PerformingGroup" : "Organization",
+			"name": artist ?? organizer,
 		  }
 		},
 		{

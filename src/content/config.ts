@@ -17,7 +17,7 @@ const termine = defineCollection({
         price:         z.string().optional(),
         price_info:    z.string().optional(),
         artist:        z.string().optional(),
-        organizer:     z.string().optional(),
+        organizer:     z.string(),
         organizer_url: z.string().url().optional(),
         source:        z.string().optional(),
         source_url:    z.string().url().optional()
