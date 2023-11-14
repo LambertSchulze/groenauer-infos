@@ -4,10 +4,22 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS } from "../consts";
 import MainNavigation from "../components/MainNavigation.astro";
 import Footer from "../components/Footer.astro";
 
-const { title } = Astro.props;
+const {
+	title,
+	description,
+	schemaData
+} = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const documentTitle = title ? SITE_TITLE.concat(" • ", title) : SITE_TITLE;
+
+const baseSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"name": SITE_TITLE,
+	"alternateName": ["Grönauer Informationen", "Groß Grönauer Infos"],
+	"url": Astro.site,
+};
 ---
 
 <html lang="de">
@@ -15,13 +27,25 @@ const documentTitle = title ? SITE_TITLE.concat(" • ", title) : SITE_TITLE;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<link rel="canonical" href={canonicalURL} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
-
+		
+		<link rel="icon" href="/favicon.ico" sizes="any">
+		<link rel="icon" href="/icon.svg" type="image/svg+xml">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="manifest" href="/manifest.webmanifest">
+		
 		<title>{documentTitle}</title>
-		<meta name="title" content={SITE_TITLE} />
-		<meta name="description" content={SITE_DESCRIPTION} />
+		<meta name="title" content={title} />
+		<meta name="description" content={description ?? SITE_DESCRIPTION} />
 		<meta name="keywords" content={SITE_KEYWORDS} />
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(
+				schemaData
+					? new Array(baseSchema, schemaData).flat
+					: baseSchema,
+			)}
+		/>
 	</head>
 	<body>
 		<MainNavigation />

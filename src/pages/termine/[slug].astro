@@ -89,7 +89,11 @@ const schemaData = [{
 		}]
 ---
 
-<BaseLayout title={title}>
+<BaseLayout
+	{title}
+	{schemaData}
+	description=`${title}, ${date}, ${placeObject.data.name}`
+>
 	<article class="mb-5">
 		{
 			subtitle ? (
@@ -159,8 +163,6 @@ const schemaData = [{
 			)
 		}
 	</article>
-
-	<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />	
 </BaseLayout>
 
 <style>
