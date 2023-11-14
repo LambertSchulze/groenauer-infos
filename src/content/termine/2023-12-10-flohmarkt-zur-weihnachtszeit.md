@@ -8,7 +8,7 @@
   cardLayout: "poster"
   categories:
     - "Flohmarkt"
-  organiser: "TSV Eintracht Groß Grönau"
+  organizer: "TSV Eintracht Groß Grönau"
   source: "TSV Eintracht Groß Grönau"
   source_url: "https://www.tsv-eintracht.de/"
 ---

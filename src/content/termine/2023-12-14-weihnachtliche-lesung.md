@@ -11,6 +11,7 @@
     - "Lesung"
     - "Kaffeekranz"
   organizer: "Gemeinde Gross Grönau"
+  organizer_url: "https://gross-groenau.de/"
   source: "Aushang"
 ---
 

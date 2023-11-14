@@ -1,11 +1,13 @@
 ---
-    title: 'Herbst Häckselaktion'
-    date: '2023-11-06'
-    time: "07:00:00+01:00"
-    place: "groenau"
-    price: '0'
-    source: "Bürgermeisterbrief"
-    source_url: "https://gross-groenau.de/tl_files/Buergermeisterbrief/Bgm-Brief%20III.%202023%202.%20H%C3%A4lfte%20Herbst%20aktuell.pdf"
+  title: 'Herbst Häckselaktion'
+  date: '2023-11-06'
+  time: "07:00:00+01:00"
+  place: "groenau"
+  price: '0'
+  organizer: "Gemeinde Gross Grönau"
+  organizer_url: "https://gross-groenau.de/"
+  source: "Bürgermeisterbrief"
+  source_url: "https://gross-groenau.de/tl_files/Buergermeisterbrief/Bgm-Brief%20III.%202023%202.%20H%C3%A4lfte%20Herbst%20aktuell.pdf"
 ---
 
 Diese Häckselaktion ist dafür gedacht, Ihnen den regelmäßig im Herbst anfallenden Baum- sowie Strauchschnitt abzunehmen.

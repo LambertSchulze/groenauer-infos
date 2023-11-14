@@ -9,7 +9,7 @@
   cardLayout: "poster"
   categories:
     - "Markt"
-  organiser: "Gemeinde Gross Sarau"
+  organizer: "Gemeinde Gross Sarau"
   source: "Gemeinde Gross Sarau"
   source_url: "https://gemeinde-gross-sarau.de/index.php/Events.html?day=20231111"
 ---

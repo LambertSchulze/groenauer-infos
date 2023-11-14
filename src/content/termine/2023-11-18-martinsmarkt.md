@@ -7,7 +7,7 @@
   place: "gemeindehaus-st-willehad"
   categories:
     - "Markt"
-  organiser: "Gemeinde St. Willehad"
+  organizer: "Gemeinde St. Willehad"
 ---
 
 Es gibt Kunsthandwerk, ein Kuchenbuffet und die Klinik Clowns.
