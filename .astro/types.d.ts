@@ -238,6 +238,13 @@ declare module 'astro:content' {
   collection: "termine";
   data: InferEntrySchema<"termine">
 } & { render(): Render[".md"] };
+"2023-12-14-weihnachtliche-lesung.md": {
+	id: "2023-12-14-weihnachtliche-lesung.md";
+  slug: "2023-12-14-weihnachtliche-lesung";
+  body: string;
+  collection: "termine";
+  data: InferEntrySchema<"termine">
+} & { render(): Render[".md"] };
 };
 
 	};
