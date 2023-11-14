@@ -16,5 +16,5 @@
 
 Für eine bessere Planung wird um eine verbindliche Anmeldung (<a href="tel:04509874419">04509/874419</a>) gebeten.
 
-Zu ebeginn gibt es Kaffee und adventliches Gebäck,
+Zu Beginn gibt es Kaffee und adventliches Gebäck,
 danach trägt Herr Eckhard Lange Erzählungen vor.
