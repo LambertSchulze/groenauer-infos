@@ -13,8 +13,6 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const documentTitle = title ? SITE_TITLE.concat(" • ", title) : SITE_TITLE;
 
-console.log(schemaData)
-
 const baseSchema = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
@@ -44,7 +42,7 @@ const baseSchema = {
 			type="application/ld+json"
 			set:html={JSON.stringify(
 				schemaData
-					? new Array(baseSchema, schemaData).flat
+					? new Array(baseSchema, schemaData).flat()
 					: baseSchema,
 			)}
 		/>
