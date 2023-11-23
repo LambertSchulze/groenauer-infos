@@ -1,0 +1,13 @@
+{
+    "name": "Ev-Luth. Kirchengemeinde St. Willehad",
+    "address": {
+        "street": "Hauptstraße",
+        "house_number": "16",
+        "postal_code": 23627,
+        "city": "Groß Grönau"
+    },
+    "coords": {
+        "lon": 10.75401,
+        "lat": 53.79845
+    }
+}
