@@ -41,7 +41,7 @@ const {
 					<CategoryBadges
 						{categories}
 						wrapperCSS="card-img-overlay"
-						badgeCSS="position-absolute bottom-0"
+						badgeCSS="position-absolute bottom-0 mb-2"
 					/>
 					<a class="stretched-link" href={`/${collection}/${slug}`} />
 				</div>
@@ -63,7 +63,9 @@ const {
 						<Pin />
 						&NonBreakingSpace;{ortName}
 					</p>
-					<CategoryBadges {categories} />
+					<CategoryBadges
+						{categories}
+					/>
 					<p class="card-text text-end">
 						<CollectionLink
 							css="stretched-link"

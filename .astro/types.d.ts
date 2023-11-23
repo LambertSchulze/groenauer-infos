@@ -224,6 +224,20 @@ declare module 'astro:content' {
   collection: "termine";
   data: InferEntrySchema<"termine">
 } & { render(): Render[".md"] };
+"2023-12-01-adventskonzert.md": {
+	id: "2023-12-01-adventskonzert.md";
+  slug: "2023-12-01-adventskonzert";
+  body: string;
+  collection: "termine";
+  data: InferEntrySchema<"termine">
+} & { render(): Render[".md"] };
+"2023-12-09-in-dulci-jubilo.md": {
+	id: "2023-12-09-in-dulci-jubilo.md";
+  slug: "2023-12-09-in-dulci-jubilo";
+  body: string;
+  collection: "termine";
+  data: InferEntrySchema<"termine">
+} & { render(): Render[".md"] };
 "2023-12-10-flohmarkt-zur-weihnachtszeit.md": {
 	id: "2023-12-10-flohmarkt-zur-weihnachtszeit.md";
   slug: "2023-12-10-flohmarkt-zur-weihnachtszeit";
@@ -273,6 +287,11 @@ declare module 'astro:content' {
 };
 "groenau-halle": {
 	id: "groenau-halle";
+  collection: "orte";
+  data: InferEntrySchema<"orte">
+};
+"kirche-st-willehad": {
+	id: "kirche-st-willehad";
   collection: "orte";
   data: InferEntrySchema<"orte">
 };

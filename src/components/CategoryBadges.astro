@@ -12,7 +12,7 @@ const { categories, wrapperCSS, badgeCSS } = Astro.props;
 	categories && (
 		<div class:list={[wrapperCSS]}>
 			{categories.map((c) => (
-				<span class:list={["badge text-bg-secondary", badgeCSS]}>
+				<span class:list={["badge text-bg-secondary me-1", badgeCSS]}>
 					{c}
 				</span>
 			))}

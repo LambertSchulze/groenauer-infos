@@ -7,7 +7,7 @@
   organizer: "Kreisjugendring Herzogtum Lauenburg"
   organizer_url: "https://kjr-herzogtum-lauenburg.de/"
   categories:
-    - "Veranstaltung"
+    - "Kinder"
   source: "Kreisjugendring Herzogtum Lauenburg"
   source_url: "https://kjr-herzogtum-lauenburg.de/veranstaltungen/spieliothek/"
 ---

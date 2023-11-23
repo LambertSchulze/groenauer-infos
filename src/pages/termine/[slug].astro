@@ -40,12 +40,13 @@ const {
 const placeObject = await getEntry("orte", placeId);
 const { Content } = await Astro.props.render();
 
+const startDate = date + (time ? ('T' + time + (timeEnd ? ('-' + timeEnd) : '')) : '')
 const schemaData = [{
 		  "@context": "https://schema.org",
 		  "@type": "Event",
 		  "name": title + (subtitle ? (' - ' + subtitle) : ''),
-		  "startDate": date + (time ? ('T' + time + (timeEnd ? ('-' + timeEnd) : '')) : ''),
-		  "endDate": dateEnd ? dateEnd + (timeEnd ? ('T' + timeEnd) : '') : '',
+		  "startDate": startDate,
+		  "endDate": dateEnd ? dateEnd + (timeEnd ? ('T' + timeEnd) : '') : startDate,
 		  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
 		  "eventStatus": "https://schema.org/EventScheduled",
 		  "location": {
@@ -68,7 +69,8 @@ const schemaData = [{
 		  "performer": {
 			"@type": artist ? "PerformingGroup" : "Organization",
 			"name": artist ?? organizer,
-		  }
+		  },
+		  "isAccessibleForFree": Boolean(price)
 		},
 		{
 			"@context": "https://schema.org",
